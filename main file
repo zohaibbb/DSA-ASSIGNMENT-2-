@@ -1,1 +1,72 @@
+#include "header.h"
 
+int main()
+{
+    Queue printerQueue;
+
+    int choice;
+    int jobId, pages;
+
+    // Default Jobs
+    printerQueue.enqueue(101, 5);
+    printerQueue.enqueue(102, 12);
+    printerQueue.enqueue(103, 3);
+    printerQueue.enqueue(104, 8);
+    printerQueue.enqueue(105, 6);
+
+    do
+    {
+        cout << "**************************************\n";
+        cout << "     COMPUTER LAB PRINTING SYSTEM        \n";
+        cout << "**********************************\n";
+
+        cout << "1. Add Print Job\n";
+        cout << "2. Print First Job\n";
+        cout << "3. View Next Job\n";
+        cout << "4. Display All Jobs\n";
+        cout << "5. Show Total Pending Pages\n";
+        cout << "6. Exit\n";
+
+        cout << "\nEnter Your Choice : ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            cout << "\nEnter Job ID : ";
+            cin >> jobId;
+
+            cout << "Enter Number of Pages : ";
+            cin >> pages;
+
+            printerQueue.enqueue(jobId, pages);
+            break;
+
+        case 2:
+            printerQueue.dequeue();
+            break;
+
+        case 3:
+            printerQueue.peek();
+            break;
+
+        case 4:
+            printerQueue.display();
+            break;
+
+        case 5:
+            printerQueue.totalPages();
+            break;
+
+        case 6:
+            cout << "\nProgram Closed Successfully!\n";
+            break;
+
+        default:
+            cout << "\nInvalid Choice! Try Again.\n";
+        }
+
+    } while (choice != 6);
+
+    return 0;
+}
