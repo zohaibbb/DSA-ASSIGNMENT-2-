@@ -1,0 +1,38 @@
+#ifndef HEADER_H
+#define HEADER_H
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+const int SIZE = 100;
+
+// Structure for Print Job
+struct PrintJob
+{
+    int jobId;
+    int pages;
+};
+
+// Queue Class
+class Queue
+{
+private:
+    PrintJob jobs[SIZE];
+    int front;
+    int rear;
+
+public:
+    Queue();
+
+    bool isEmpty();
+    bool isFull();
+
+    void enqueue(int jobId, int pages);
+    void dequeue();
+    void peek();
+    void display();
+    void totalPages();
+};
+
+#endif
