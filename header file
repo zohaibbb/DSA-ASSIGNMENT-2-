@@ -1,1 +1,35 @@
+#include "header.h"
 
+int main()
+{
+    Queue printerQueue;
+
+    // Insert print jobs
+    printerQueue.enqueue(101, 5);
+    printerQueue.enqueue(102, 12);
+    printerQueue.enqueue(103, 3);
+    printerQueue.enqueue(104, 8);
+    printerQueue.enqueue(105, 6);
+
+    // 1. Display all jobs
+    cout << "\n--- All Print Jobs ---\n";
+    printerQueue.display();
+
+    // 2. Remove two jobs
+    cout << "\n--- Printing Two Jobs ---\n";
+    printerQueue.dequeue();
+    printerQueue.dequeue();
+
+    // 3. Display next job
+    cout << "\n--- Next Print Job ---\n";
+    printerQueue.peek();
+
+    // 4. Display remaining jobs
+    cout << "\n--- Remaining Print Jobs ---\n";
+    printerQueue.display();
+
+    // 5. Display total pending pages
+    printerQueue.totalPages();
+
+    return 0;
+}
