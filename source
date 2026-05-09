@@ -1,0 +1,109 @@
+#include "header.h"
+
+// Constructor
+Queue::Queue()
+{
+    front = 0;
+    rear = -1;
+}
+
+// Check Empty
+bool Queue::isEmpty()
+{
+    return (front > rear);
+}
+
+// Check Full
+bool Queue::isFull()
+{
+    return (rear == SIZE - 1);
+}
+
+// Add Print Job
+void Queue::enqueue(int jobId, int pages)
+{
+    if (isFull())
+    {
+        cout << "\nQueue is Full! Cannot add more jobs.\n";
+        return;
+    }
+
+    rear++;
+
+    jobs[rear].jobId = jobId;
+    jobs[rear].pages = pages;
+
+    cout << "\nPrint Job Added Successfully!\n";
+    cout << "Job ID : " << jobId << endl;
+    cout << "Pages  : " << pages << endl;
+}
+
+// Remove Print Job
+void Queue::dequeue()
+{
+    if (isEmpty())
+    {
+        cout << "\nNo Print Jobs Available!\n";
+        return;
+    }
+
+    cout << "\nPrinting Job...\n";
+    cout << "Job ID : " << jobs[front].jobId << endl;
+    cout << "Pages  : " << jobs[front].pages << endl;
+
+    front++;
+}
+
+// Show Next Job
+void Queue::peek()
+{
+    if (isEmpty())
+    {
+        cout << "\nQueue is Empty!\n";
+        return;
+    }
+
+    cout << "\nNext Print Job\n";
+    cout << "Job ID : " << jobs[front].jobId << endl;
+    cout << "Pages  : " << jobs[front].pages << endl;
+}
+
+// Display All Jobs
+void Queue::display()
+{
+    if (isEmpty())
+    {
+        cout << "\nNo Pending Print Jobs!\n";
+        return;
+    }
+
+    cout << "\n*******\n";
+    cout << "          PENDING PRINT JOBS                 \n";
+    cout << "*******\n";
+
+    cout << left << setw(15) << "Job ID"
+        << setw(15) << "Pages" << endl;
+
+    cout << "-------------------------------------------------\n";
+
+    for (int i = front; i <= rear; i++)
+    {
+        cout << left << setw(15) << jobs[i].jobId
+            << setw(15) << jobs[i].pages << endl;
+    }
+
+    cout << "=================================================\n";
+}
+
+// Total Pending Pages
+void Queue::totalPages()
+{
+    int total = 0;
+
+    for (int i = front; i <= rear; i++)
+    {
+        total += jobs[i].pages;
+    }
+
+    cout << "\nTotal Pending Pages : " << total << endl;
+}
